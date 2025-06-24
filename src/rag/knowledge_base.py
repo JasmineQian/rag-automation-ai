@@ -17,10 +17,10 @@ class KnowledgeBase:
     def _load_documents(self):
         """支持加载单文件或目录下所有txt文件"""
         if os.path.isdir(self.file_path):
-            # 读取目录下所有txt文件
+            # 读取目录下所有txt和md文件
             documents = []
             for fname in os.listdir(self.file_path):
-                if fname.endswith('.txt'):
+                if fname.endswith('.txt') or fname.endswith('.md'):
                     fpath = os.path.join(self.file_path, fname)
                     loader = TextLoader(fpath, encoding='utf-8')
                     documents.extend(loader.load())
@@ -55,7 +55,7 @@ class KnowledgeBase:
         return self.vector_store.as_retriever(search_kwargs={"k": k})
 
 if __name__ == '__main__':
-    # 使用 faiss_index 目录下所有 txt 文件进行测试
+    # 使用 faiss_index 目录下所有 txt 和 md 文件进行测试
     kb = KnowledgeBase(file_path=os.path.join(os.path.dirname(__file__), '..', '..', 'faiss_index'))
     retriever = kb.as_retriever()
     

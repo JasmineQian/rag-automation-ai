@@ -17,7 +17,7 @@ from src.config.settings import Settings
 
 # 页面配置
 st.set_page_config(
-    page_title="QENG AI Automation Framework",
+    page_title="AI Automation Framework",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -46,8 +46,8 @@ def main():
     """主应用入口"""
     
     # 页面标题
-    st.title("🤖 QENG AI Automation Framework")
-    st.markdown("QENG AI助手")
+    st.title("🤖 AI Automation Framework")
+    st.markdown("AI助手")
     
     # 检查配置
     if not check_configuration():
@@ -148,7 +148,9 @@ def chat_interface(agent):
     # 清空对话按钮
     if st.button("🗑️ 清空对话"):
         st.session_state.chat_history = []
-        st.experimental_rerun()
+        st.rerun()
+        # st.experimental_rerun()
+
 
 def test_case_interface(test_generator):
     """测试用例生成界面"""

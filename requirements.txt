@@ -13,5 +13,5 @@ pyyaml
 requests
 rich
 sentence-transformers
-streamlit
+streamlit==1.32.0
 watchdog

@@ -55,11 +55,10 @@ ollama pull llama3
 克隆项目后，创建虚拟环境并安装依赖。
 
 ```bash
-# 创建并激活 Python 虚拟环境
+# 创建并激活 Python 虚拟环境 & 安装项目依赖
 python -m venv .venv
 source .venv/bin/activate
-
-# 安装项目依赖
+pip upgrade install pip
 pip install -r requirements.txt
 ```
 

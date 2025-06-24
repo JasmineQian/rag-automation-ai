@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-"""
-AI测试用例生成器 - 快速安装脚本
-"""
 
 import os
 import sys
