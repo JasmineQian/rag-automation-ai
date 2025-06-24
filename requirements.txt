@@ -5,6 +5,7 @@ jinja2
 langchain
 langchain-community
 langchain-huggingface
+markdownify
 pandas
 pydantic
 pydantic-settings

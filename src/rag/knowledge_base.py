@@ -15,7 +15,6 @@ class KnowledgeBase:
         self.vector_store = self._load_or_create_vector_store()
 
     def _load_documents(self):
-        """支持加载单文件或目录下所有txt文件"""
         if os.path.isdir(self.file_path):
             # 读取目录下所有txt和md文件
             documents = []
