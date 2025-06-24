@@ -1,0 +1,127 @@
+Vision
+
+Empower less technical customers to build accurate, performant digital audience segments using natural language and AI, while maintaining full transparency and control with a human in the loop interface.  Modern Segment Builder (MSB) will dramatically simplify and accelerate the process of segment creation, saving our customers time and downleveling the skills that are needed to build high performing audiences.   Over time, this will turn into goal-oriented prompts to build dynamic audiences that can update and evolve based on performance - this is just the first step.
+
+Value Proposition
+
+Speed & Usability: Customers can go from intent to deployable segment in minutes, not hours or days.
+
+Reduced Technical Barriers: Non-technical users can build complex segments without deep schema or SQL knowledge.
+
+AI-Assisted Precision: Natural language interface ensures faster discovery and iteration with human-in-the-loop adjustments.
+
+Seamless Activation: Segments built in MSB are immediately ready for activation in existing downstream destinations.
+
+Continuous Learning: Feedback loops improve AI accuracy over time for each customer and globally across the platform.
+
+Strategic Alignment
+
+Overall Impact
+
+Build the largest collaboration network.
+
+Simplify user experience and reduce barriers to increase adoption.
+
+Drive the use of more 1P data in decisioning, increasing usage + revenue.
+
+Unlock new users and personas.
+
+Accelerate AI-Led product differentiation.
+
+ 
+
+Risks
+
+Value 
+
+Customers don't trust the AI-generated segments
+Users may not feel confident that the AI-generated rules reflect their true intent, leading to low adoption.
+
+Segment building doesn't become materially easier
+If MSB fails to significantly reduce time or effort, users may revert to USB or request manual support.
+
+Most data continues to be pre-segmented because of previous segment building gaps
+Customers have adopted a common pattern for bringing data into LiveRamp because of previous functionality gaps, so can't take full advantage of MSB.
+
+Feasibility 
+
+AI model fails to meet accuracy or latency thresholds
+The agent may generate inaccurate logic or time out under real user load.
+
+Usability 
+
+Users don't understand what the agent can and cannot do
+Users may be confused by the agent's limitations (e.g., no 3P data, no existing segment editing).
+
+Targets
+Personas
+LiveRamp's User Personas
+
+1) Analyzer
+Deeply analytical users responsible for pulling insights from data, often responsible for crafting or refining segment logic.
+
+Needs Addressed by MSB:
+
+Accelerated segment creation using natural language instead doing everything with a UI builder.
+
+Visibility and control over AI-generated logic for refinement.
+
+Accuracy and reliability in complex rule generation, speed of certain tasks like dates and transactions.
+
+Example Users: Technical Services (TS), Data Science Analysts at agencies, SEs/SCs doing demo prep.
+
+2) Campaign Manager
+Performance-focused user running campaigns across platforms and evaluating audience effectiveness.
+
+Needs Addressed by MSB:
+
+Fast, easy-to-understand segment creation.
+
+Ability to generate A/B splits or test/control groups (future).
+
+Reliable segment size estimates and targeting fidelity.
+
+Example Users: Activation-focused customers in CMNs, agency leads managing multiple campaigns.
+
+3) Data Expert
+Description: Power user of LiveRamp data tools with deep understanding of schema, workflows, and technical configurations.
+
+Needs Addressed by MSB:
+
+Speed and efficiency over manual USB workflows, especially finding the right data.
+
+Precision control and visibility into agent-driven outputs.
+
+Feedback mechanisms to optimize AI behavior and rule logic over time
+
+Example Users: Instacart, Acadia data owners; internal Solutions Architects supporting enterprise deployments.
+
+Markets
+
+This initiative will start in the US and we will be expanding globally over time.
+
+Success Metrics
+
+Alpha
+
+80% or higher agent-generated segment accuracy (vs. ground truth or user-corrected output)
+
+100% feedback collection coverage (thumbs, corrections, etc.)
+
+90%+ of sessions lead to a segment being saved
+
+Response time <30 seconds for AI outputs
+
+50% of customer segments that originate from MSB are saved from the Agent
+
+No "empty" segments resulting from prompts
+
+High satisfaction (thumbs up ratio, qualitative feedback, session recordings via FullStory)
+
+Future
+
+Measurable time saved vs manual creation 
+
+Decrease in support tickets related to segment creation
+
+Agent NPS >30

@@ -135,9 +135,9 @@ def chat_interface(agent):
                     with st.chat_message("assistant"):
                         st.write(response_data.get("response"))
                         # 如果有上下文，则在可扩展组件中显示
-                        if response_data.get("context"):
-                            with st.expander("🔍 查看检索上下文"):
-                                st.markdown(response_data.get("context"))
+                        # if response_data.get("context"):
+                        #     with st.expander("🔍 查看检索上下文"):
+                                # st.markdown(response_data.get("context"))
                 
                 # 保存到会话历史
                 st.session_state.chat_history.append((user_input, response_data))

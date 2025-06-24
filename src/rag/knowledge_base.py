@@ -43,7 +43,8 @@ class KnowledgeBase:
 
     def _load_or_create_vector_store(self):
         """加载或创建向量存储"""
-        if os.path.exists(self.vector_store_path):
+        index_file = os.path.join(self.vector_store_path, "index.faiss")
+        if os.path.exists(index_file):
             print("Loading existing vector store...")
             return FAISS.load_local(self.vector_store_path, self.embeddings, allow_dangerous_deserialization=True)
         else:
@@ -58,7 +59,7 @@ if __name__ == '__main__':
     kb = KnowledgeBase(file_path=os.path.join(os.path.dirname(__file__), '..', '..', 'faiss_index'))
     retriever = kb.as_retriever()
     
-    query = "用户登录功能"
+    query = "Modern Segment Builder"
     results = retriever.get_relevant_documents(query)
     
     print(f"\nQuery: {query}")
