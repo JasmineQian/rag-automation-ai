@@ -17,7 +17,7 @@ from src.config.settings import Settings
 
 # 页面配置
 st.set_page_config(
-    page_title="AI测试用例生成器",
+    page_title="QENG AI Automation Framework",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -46,8 +46,8 @@ def main():
     """主应用入口"""
     
     # 页面标题
-    st.title("🤖 AI测试用例生成器")
-    st.markdown("智能生成测试用例和测试数据的AI助手")
+    st.title("🤖 QENG AI Automation Framework")
+    st.markdown("QENG AI助手")
     
     # 检查配置
     if not check_configuration():
@@ -161,11 +161,11 @@ def test_case_interface(test_generator):
         
         # 预设示例
         example_features = [
-            "用户登录功能",
-            "购物车结算流程",
-            "文件上传功能",
-            "用户注册验证",
-            "API接口调用"
+            "AAA",
+            "BBB",
+            "CCC",
+            "DDD",
+            "EEE"
         ]
         
         selected_example = st.selectbox("选择示例功能", ["自定义"] + example_features)

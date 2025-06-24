@@ -1,7 +1,7 @@
 import os
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
 class KnowledgeBase:
@@ -14,11 +14,24 @@ class KnowledgeBase:
         self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         self.vector_store = self._load_or_create_vector_store()
 
+    def _load_documents(self):
+        """支持加载单文件或目录下所有txt文件"""
+        if os.path.isdir(self.file_path):
+            # 读取目录下所有txt文件
+            documents = []
+            for fname in os.listdir(self.file_path):
+                if fname.endswith('.txt'):
+                    fpath = os.path.join(self.file_path, fname)
+                    loader = TextLoader(fpath, encoding='utf-8')
+                    documents.extend(loader.load())
+            return documents
+        else:
+            loader = TextLoader(self.file_path, encoding='utf-8')
+            return loader.load()
+
     def _create_vector_store(self):
         """从文档创建新的向量存储"""
-        loader = TextLoader(self.file_path, encoding='utf-8')
-        documents = loader.load()
-
+        documents = self._load_documents()
         text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
         docs = text_splitter.split_documents(documents)
 
@@ -41,9 +54,8 @@ class KnowledgeBase:
         return self.vector_store.as_retriever(search_kwargs={"k": k})
 
 if __name__ == '__main__':
-    # 使用示例文件进行测试
-    sample_file = os.path.join(os.path.dirname(__file__), '..', '..', 'examples', 'sample_features.txt')
-    kb = KnowledgeBase(file_path=sample_file)
+    # 使用 faiss_index 目录下所有 txt 文件进行测试
+    kb = KnowledgeBase(file_path=os.path.join(os.path.dirname(__file__), '..', '..', 'faiss_index'))
     retriever = kb.as_retriever()
     
     query = "用户登录功能"

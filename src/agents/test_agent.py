@@ -21,7 +21,7 @@ class TestAgent:
         self.data_generator = DataGenerator()
         self.conversation_history = []
         # 初始化RAG检索器
-        self.retriever = Retriever()
+        self.retriever = Retriever(file_path=os.path.join(os.path.dirname(__file__), '..', '..', 'faiss_index'))
         
     def chat(self, user_input: str) -> Dict:
         """处理用户输入并返回包含响应和上下文的字典"""

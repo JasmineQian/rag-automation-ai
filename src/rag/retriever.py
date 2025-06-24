@@ -7,9 +7,8 @@ class Retriever:
     """
     def __init__(self, file_path=None):
         if file_path is None:
-            # 默认使用示例文件
-            file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'examples', 'sample_features.txt')
-        
+            # 默认使用 faiss_index 目录
+            file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'faiss_index')
         self.knowledge_base = KnowledgeBase(file_path=file_path)
         self.retriever = self.knowledge_base.as_retriever()
 
@@ -17,8 +16,7 @@ class Retriever:
         """
         根据查询文本检索相关文档，并格式化为字符串
         """
-        docs = self.retriever.get_relevant_documents(query_text)
-        
+        docs = self.retriever.invoke(query_text)
         context = "\n\n".join([doc.page_content for doc in docs])
         return context
 
