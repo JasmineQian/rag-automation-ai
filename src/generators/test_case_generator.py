@@ -4,6 +4,7 @@
 
 import json
 import yaml
+import re
 from typing import Dict, List, Optional
 from ..config.settings import Settings
 from ..utils.llama_client import LlamaClient
@@ -71,17 +72,30 @@ class TestCaseGenerator:
             return f"生成测试用例时出现错误：{str(e)}"
     
     def generate_from_features(self, features_text: str, output_format: str = "json") -> str:
-        """从功能列表生成批量测试用例"""
+        """从Gherkin格式的.feature文件内容中生成批量测试用例"""
         try:
-            # 分割功能描述
-            features = [f.strip() for f in features_text.split('\n') if f.strip()]
+            # 使用正则表达式分离Feature和Scenarios
+            feature_header_match = re.search(r'^\s*Feature:(.*)', features_text, re.IGNORECASE | re.MULTILINE)
+            feature_name = feature_header_match.group(1).strip() if feature_header_match else "Untitled Feature"
+
+            scenarios = re.split(r'\n\s*(?=Scenario:)', features_text, flags=re.IGNORECASE)
             
             all_test_cases = []
             
-            for feature in features:
-                test_case = self.generate_from_description(feature)
+            # 从第二个元素开始遍历，第一个是Feature描述
+            for scenario_block in scenarios[1:]:
+                if not scenario_block.strip():
+                    continue
+
+                # 提取Scenario的标题和步骤
+                scenario_lines = scenario_block.strip().split('\n')
+                scenario_name = scenario_lines[0].replace('Scenario:', '').strip()
+                
+                # 将整个Scenario作为描述传递
+                test_case = self.generate_from_description(scenario_block)
+                
                 all_test_cases.append({
-                    'feature': feature,
+                    'feature': f"{feature_name} - {scenario_name}",
                     'test_cases': test_case
                 })
             
@@ -99,7 +113,7 @@ class TestCaseGenerator:
                 return text_output
                 
         except Exception as e:
-            return f"批量生成测试用例时出现错误：{str(e)}"
+            return f"生成测试用例时出现错误：{str(e)}"
     
     def generate_api_test_cases(self, api_spec: Dict) -> str:
         """根据API规范生成测试用例"""

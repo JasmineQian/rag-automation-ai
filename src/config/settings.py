@@ -4,7 +4,11 @@
 
 import os
 from typing import Optional
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
+from dotenv import load_dotenv
+
+# 加载 .env 文件
+load_dotenv()
 
 class Settings(BaseSettings):
     """项目配置"""
@@ -27,6 +31,9 @@ class Settings(BaseSettings):
     default_locale: str = os.getenv("DEFAULT_LOCALE", "zh_CN")
     default_test_framework: str = os.getenv("DEFAULT_TEST_FRAMEWORK", "pytest")
     
+    # Google API Key
+    google_api_key: Optional[str] = None
+    
     class Config:
         env_file = ".env"
         case_sensitive = False
@@ -47,4 +54,8 @@ class Settings(BaseSettings):
             "temperature": self.model_temperature,
             "max_tokens": self.max_tokens,
             "base_url": self.ollama_base_url
-        } 
+        }
+
+    def validate_api_key(self) -> bool:
+        """检查Google API密钥是否存在"""
+        return self.google_api_key is not None and self.google_api_key != "YOUR_GOOGLE_API_KEY" 
