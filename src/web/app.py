@@ -161,11 +161,11 @@ def test_case_interface(test_generator):
         
         # 预设示例
         example_features = [
-            "AAA",
-            "BBB",
-            "CCC",
-            "DDD",
-            "EEE"
+            "Get Request to API",
+            "Get Request to API with Parameters",
+            "Post Request to API",
+            "Post Request to API with JSON Body",
+            "Post Request to API with Form Data",
         ]
         
         selected_example = st.selectbox("选择示例功能", ["自定义"] + example_features)

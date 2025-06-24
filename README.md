@@ -99,16 +99,42 @@ streamlit run src/web/app.py
 ## 项目结构
 
 ```
-ai-test-generator/
-├── src/
-│   ├── agents/             # AI代理核心逻辑
-│   ├── generators/         # 测试用例和数据生成器
-│   ├── templates/          # 测试用例模板
-│   ├── utils/              # 工具函数
-│   └── config/             # 配置文件
-├── examples/               # 示例和演示
-├── tests/                  # 项目测试
-└── docs/                   # 文档
+rag-automation-ai/
+├── config.env                  # 环境变量配置文件
+├── faiss_index/                # FAISS 向量知识库相关文件
+│   ├── index.faiss
+│   ├── index.pkl
+│   └── modern_segment_builder.txt
+├── main.py                     # 入口脚本（可选）
+├── README.md                   # 项目说明文档
+├── README_LLAMA_SETUP.md       # LLaMA 模型安装配置说明
+├── requirements.txt            # 依赖包列表
+├── setup.py                    # 安装脚本
+├── src/                        # 核心源代码
+│   ├── agents/                 # Agent 相关逻辑
+│   │   ├── __init__.py
+│   │   └── test_agent.py
+│   ├── config/                 # 配置相关
+│   │   ├── __init__.py
+│   │   └── settings.py
+│   ├── generators/             # 测试用例与数据生成器
+│   │   ├── __init__.py
+│   │   ├── data_generator.py
+│   │   └── test_case_generator.py
+│   ├── rag/                    # RAG 检索与知识库
+│   │   ├── __init__.py
+│   │   ├── knowledge_base.py
+│   │   └── retriever.py
+│   ├── utils/                  # 工具函数
+│   │   ├── __init__.py
+│   │   ├── helpers.py
+│   │   └── llama_client.py
+│   └── web/                    # Web 应用（Streamlit）
+│       ├── __init__.py
+│       └── app.py
+├── Streamlit_vs_open-webui.md  # 相关对比文档
+├── test_llama_integration.py   # Llama 集成测试脚本
+└── requirement_bak.txt         # 依赖备份
 ```
 
 ## 📖 详细使用指南
